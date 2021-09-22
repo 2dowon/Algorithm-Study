@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>10부제</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(n, arr) {
+        let answer = 0;
+
+        arr.forEach((x) => {
+          if (x % 10 === n) {
+            answer += 1;
+          }
+        });
+        return answer;
+      }
+
+      let arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(mySolution(3, arr));
+
+      // 강의 풀이
+      function solution(day, arr) {
+        let answer = 0;
+        for (let x of arr) {
+          if (x % 10 == day) answer++;
+        }
+
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
