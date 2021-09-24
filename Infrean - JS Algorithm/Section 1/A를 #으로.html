@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>A를 #으로</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = str.split("");
+
+        for (let i = 0; i < answer.length; i++) {
+          if (answer[i] === "A") {
+            answer[i] = "#";
+          }
+        }
+
+        answer = answer.join("");
+
+        return answer;
+      }
+
+      console.log(mySolution("BANANA"));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "";
+        for (let x of s) {
+          if (x == "A") answer += "#";
+          else answer += x;
+        }
+        return answer;
+      }
+
+      console.log(solution("BANANA"));
+
+      function solution2(s) {
+        let answer = s;
+        answer = s.replace(/A/g, "#");
+
+        return answer;
+      }
+
+      console.log(solution2("BANANA"));
+    </script>
+  </body>
+</html>
