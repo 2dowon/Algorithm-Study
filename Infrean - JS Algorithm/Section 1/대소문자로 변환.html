@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>대소문자로 변환</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = "";
+
+        for (let x of str) {
+          if (x === x.toUpperCase()) {
+            answer += x.toLowerCase();
+          } else {
+            answer += x.toUpperCase();
+          }
+        }
+        return answer;
+      }
+
+      console.log(mySolution("StuDY"));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "";
+        for (let x of s) {
+          if (x === x.toUpperCase()) answer += x.toLowerCase();
+          else answer += x.toUpperCase();
+        }
+        return answer;
+      }
+
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>

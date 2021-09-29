@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가장 긴 문자열</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(words) {
+        let answer = "";
+        for (word of words) {
+          if (answer.length < word.length) {
+            answer = word;
+          }
+        }
+        return answer;
+      }
+
+      const words = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(mySolution(words));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "",
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
+        }
+        return answer;
+      }
+      let str = ["teacher", "time", "student", "beautiful", "good"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
