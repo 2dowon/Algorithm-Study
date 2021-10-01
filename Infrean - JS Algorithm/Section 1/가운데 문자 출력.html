@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가운데 문자 출력</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer;
+        const idx = parseInt(str.length / 2);
+
+        if (str.length % 2 == 1) {
+          answer = str[idx];
+        } else {
+          answer = str[idx - 1] + str[idx];
+        }
+
+        return answer;
+      }
+
+      console.log(mySolution("study"));
+      console.log(mySolution("good"));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer;
+        let mid = Math.floor(s.length / 2);
+        if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+        else answer = s.substring(mid - 1, mid + 1);
+        //if(s.length%2===1) answer=s.substr(mid, 1);
+        //else answer=s.substr(mid-1, 2);
+        return answer;
+      }
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>

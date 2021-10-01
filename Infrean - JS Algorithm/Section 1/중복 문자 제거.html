@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복 문자 제거</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        const _str = new Set(str.split(""));
+        const answer = [..._str].join("");
+
+        return answer;
+      }
+
+      console.log(mySolution("ksekkset"));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "";
+        //console.log(s.indexOf("K"));
+        for (let i = 0; i < s.length; i++) {
+          //console.log(s[i], i, s.indexOf(s[i]));
+          if (s.indexOf(s[i]) === i) answer += s[i];
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+
+      // 응용 => 해당 문자가 몇 번 반복됐는지 구하기
+      function solution(s) {
+        let answer = 0;
+        let pos = s.indexOf("k");
+
+        while (pos !== -1) {
+          answer++;
+          pos = s.indexOf("k", pos + 1);
+        }
+        return answer;
+      }
+      console.log(solution("ksekkset"));
+    </script>
+  </body>
+</html>

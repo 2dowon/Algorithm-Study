@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복 단어 제거</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(words) {
+        const _str = new Set(words);
+        const answer = [..._str];
+
+        return answer;
+      }
+
+      const words = ["good", "time", "good", "time", "student"];
+      console.log(mySolution(words));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer;
+        //console.log(s.indexOf("student"));
+        answer = s.filter((v, i) => {
+          //console.log(v, i);
+          if (s.indexOf(v) === i) return v;
+          // return s.indexOf(v) === i;
+        });
+
+        return answer;
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
