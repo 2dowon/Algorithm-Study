@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>보이는 학생</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(nums) {
+        let answer = [nums[0]];
+        let max = 0;
+
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] < nums[i + 1] && nums[i + 1] > max) {
+            max = nums[i + 1];
+            answer.push(nums[i + 1]);
+          }
+        }
+
+        return answer.length;
+      }
+
+      const nums = [130, 135, 148, 140, 145, 150, 150, 153];
+      console.log(mySolution(nums));
+
+      // 강의 풀이
+      function solution(arr) {
+        let answer = 1,
+          max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > max) {
+            answer++;
+            max = arr[i];
+          }
+        }
+        return answer;
+      }
+
+      let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

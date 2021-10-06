@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>큰 수 출력하기</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(nums) {
+        let answer = [nums[0]];
+
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] < nums[i + 1]) {
+            answer.push(nums[i + 1]);
+          }
+        }
+
+        return answer.join(" ");
+      }
+
+      const nums = [7, 3, 9, 5, 6, 12];
+      console.log(mySolution(nums));
+
+      // 강의 풀이
+      function solution(arr) {
+        let answer = [];
+        answer.push(arr[0]);
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > arr[i - 1]) answer.push(arr[i]);
+        }
+        return answer;
+      }
+
+      let arr = [7, 3, 9, 5, 6, 12];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

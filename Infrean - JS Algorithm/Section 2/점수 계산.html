@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>점수 계산</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(nums) {
+        let answer = 0;
+        let x = 0;
+
+        for (let num of nums) {
+          if (num === 1) {
+            if (x !== 0) {
+              answer = answer + x + 1;
+              x += 1;
+            } else {
+              answer += 1;
+              x += 1;
+            }
+          } else {
+            x = 0;
+          }
+        }
+
+        return answer;
+      }
+
+      const nums = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(mySolution(nums));
+
+      // 강의 풀이
+      function solution(arr) {
+        let answer = 0,
+          cnt = 0;
+        for (let x of arr) {
+          if (x === 1) {
+            cnt++;
+            answer += cnt;
+          } else cnt = 0;
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
