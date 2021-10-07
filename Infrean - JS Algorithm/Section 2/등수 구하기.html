@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>등수 구하기</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(nums) {
+        let answer = [];
+
+        const newNums = [...nums];
+        const sortedNums = Array.from(new Set(nums.sort((a, b) => b - a)));
+        for (let num of newNums) {
+          for (let i = 0; i < sortedNums.length; i++) {
+            if (num === sortedNums[i]) {
+              answer.push(i + 1);
+            }
+          }
+        }
+        return answer.join(" ");
+      }
+
+      const nums = [87, 100, 100, 100, 76];
+      console.log(mySolution(nums)); // 2 1 1 1 3
+
+      // 강의 풀이
+      function solution(arr) {
+        let n = arr.length;
+        let answer = Array.from({ length: n }, () => 1);
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (arr[j] > arr[i]) answer[i]++;
+          }
+        }
+        return answer;
+      }
+
+      let arr = [87, 100, 100, 100, 76];
+      console.log(solution(arr)); // 4 1 1 1 5
+
+      // 다른 사람 풀이
+      function solution(arr2) {
+        const answer = arr.map((i) => arr.filter((j) => i < j).length + 1);
+        return answer;
+      }
+
+      let arr2 = [87, 100, 100, 100, 76];
+      console.log(solution(arr2)); // 4 1 1 1 5
+    </script>
+  </body>
+</html>
