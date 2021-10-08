@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>회문문자열</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = "YES";
+        const n = str.length;
+
+        for (let i = 0; i < Math.floor(n); i++) {
+          if (str[i].toLowerCase() !== str[n - i - 1].toLowerCase()) {
+            answer = "NO";
+          }
+        }
+        return answer;
+      }
+
+      console.log(mySolution("gooG"));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase();
+        let len = s.length;
+        for (let i = 0; i < Math.floor(len / 2); i++) {
+          if (s[i] != s[len - i - 1]) return "NO";
+        }
+        return answer;
+      }
+
+      let str = "goooG";
+      console.log(solution(str));
+
+      // 강의 풀이 2
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase();
+        if (s.split("").reverse().join("") !== s) return "NO";
+        return answer;
+      }
+
+      str = "goooG";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

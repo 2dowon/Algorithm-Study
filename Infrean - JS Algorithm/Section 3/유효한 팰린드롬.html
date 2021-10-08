@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>유효한 팰린드롬</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = "YES";
+        const aStr = str.toLowerCase().replace(/[^a-z]/gi, "");
+        const n = aStr.length;
+
+        for (let i = 0; i < Math.floor(n); i++) {
+          if (aStr[i] !== aStr[n - i - 1]) {
+            answer = "NO";
+          }
+        }
+        return answer;
+      }
+
+      let str = "found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(mySolution(str));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "YES";
+        s = s.toLowerCase().replace(/[^a-z]/g, "");
+        if (s.split("").reverse().join("") !== s) return "NO";
+        return answer;
+      }
+
+      str = "found7, time: study; Yduts; emit, 7Dnuof";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

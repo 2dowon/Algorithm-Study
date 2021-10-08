@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가장 짧은 문자거리</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str, t) {
+        let answer = [];
+
+        const tIndexs = [];
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === t) {
+            tIndexs.push(i);
+          }
+        }
+
+        for (let i = 0; i < str.length; i++) {
+          const mins = [];
+          for (tIndex of tIndexs) {
+            mins.push(Math.abs(i - tIndex));
+          }
+          answer.push(Math.min.apply(null, mins));
+        }
+
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(mySolution(str, "e"));
+
+      // 강의 풀이
+      function solution(s, t) {
+        let answer = [];
+        let p = 1000;
+        for (let x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+        p = 1000;
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] === t) p = 0;
+          else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+        return answer;
+      }
+
+      str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>숫자만 추출</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        const answer = Number(str.toLowerCase().replace(/[^0-9]/gi, ""));
+        return answer;
+      }
+
+      let str = "g0en2T0s8eSoft";
+      console.log(mySolution(str));
+
+      // 강의 풀이
+      function solution(str) {
+        let answer = "";
+        for (let x of str) {
+          if (!isNaN(x)) answer += x;
+        }
+        return parseInt(answer);
+      }
+
+      str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+
+      // 강의 풀이 2
+      function solution(str) {
+        let answer = 0;
+        for (let x of str) {
+          if (!isNaN(x)) answer = answer * 10 + Number(x);
+        }
+        return answer;
+      }
+
+      str = "g0en2T0s8eSoft";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
