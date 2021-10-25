@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>졸업 선물</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      // i !== j를 고려하지 않음 => 할인 가격으로 구매한 상품을 제외하고 가격을 더했을 때 예산을 초과하는지를 알아봐야 하는데, 이를 고려하지 않았으므로 내 풀이는 틀렸음..
+      function mySolution(m, product) {
+        let answer = 0;
+
+        product.sort((a, b) => {
+          const x = a.reduce((a, b) => a + b);
+          const y = b.reduce((a, b) => a + b);
+          return x - y;
+        });
+
+        const n = product.length;
+        for (let i = 0; i < n; i++) {
+          let x = 1;
+          let sumCost = product[i][0] / 2 + product[i][1];
+          for (let j = 0; j < n; j++) {
+            sumCost += product[j][0] + product[j][1];
+            if (sumCost > m) {
+              break;
+            } else {
+              x += 1;
+              if (answer < x) answer = x;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(mySolution(28, arr));
+
+      // 강의 풀이
+      function solution(m, product) {
+        let answer = 0;
+        let n = product.length;
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+        for (let i = 0; i < n; i++) {
+          let money = m - (product[i][0] / 2 + product[i][1]);
+          let cnt = 1;
+          for (let j = 0; j < n; j++) {
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+              money -= product[j][0] + product[j][1];
+              cnt++;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+        return answer;
+      }
+
+      arr = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(solution(28, arr));
+    </script>
+  </body>
+</html>

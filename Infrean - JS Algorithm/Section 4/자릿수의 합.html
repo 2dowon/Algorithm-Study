@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>자릿수의 합</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(arr) {
+        let answer = 0;
+        let max = 0;
+
+        for (let a of arr) {
+          let _a = a;
+          let sum = 0;
+          while (_a > 1) {
+            if (_a / 10 > 0) {
+              sum += Math.floor(_a % 10);
+              _a = _a / 10;
+            }
+          }
+
+          if (sum === max) {
+            if (a > answer) {
+              answer = a;
+            }
+          } else if (sum > max) {
+            max = sum;
+            answer = a;
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(mySolution(arr));
+
+      // 강의 풀이
+      function solution(n, arr) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of arr) {
+          let sum = 0,
+            tmp = x;
+          while (tmp) {
+            sum += tmp % 10;
+            tmp = Math.floor(tmp / 10);
+          }
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) answer = x;
+          }
+        }
+        return answer;
+      }
+
+      arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+
+      // 강의 풀이2
+      function solution(n, arr) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of arr) {
+          let sum = x
+            .toString()
+            .split("")
+            .reduce((a, b) => a + Number(b), 0);
+
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) answer = x;
+          }
+        }
+        return answer;
+      }
+
+      arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
+</html>
