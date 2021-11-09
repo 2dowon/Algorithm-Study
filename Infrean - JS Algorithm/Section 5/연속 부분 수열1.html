@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>연속 부분 수열1</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(m, arr) {
+        let answer = 0;
+        let n = arr.length;
+
+        for (let i = 0; i < n; i++) {
+          for (let j = i + 1; j < n; j++) {
+            const x = arr.slice(i, j + 1);
+            const sumOfX = x.reduce((a, b) => a + b, 0);
+            if (sumOfX === m) answer += 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let a = [1, 2, 1, 3, 1, 1, 1, 2];
+      console.log(mySolution(6, a));
+
+      // 강의 풀이
+      function solution(m, arr) {
+        let answer = 0,
+          left = 0,
+          sum = 0;
+        for (let right = 0; right < arr.length; right++) {
+          sum += arr[right];
+          if (sum === m) answer++;
+          while (sum >= m) {
+            sum -= arr[left++];
+            if (sum === m) answer++;
+          }
+        }
+        return answer;
+      }
+
+      a = [1, 2, 1, 3, 1, 1, 1, 2];
+      console.log(solution(6, a));
+    </script>
+  </body>
+</html>

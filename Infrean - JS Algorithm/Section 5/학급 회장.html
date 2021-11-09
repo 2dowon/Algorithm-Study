@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>학급 회장</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = "";
+        let voteInfo = {};
+
+        str_list = str.split("");
+
+        str_list.forEach((s) => {
+          if (voteInfo[s] === undefined) {
+            voteInfo[s] = 1;
+          } else {
+            voteInfo[s] += 1;
+          }
+        });
+
+        voteInfo = Object.entries(voteInfo).sort(([, a], [, b]) => b - a);
+        answer = voteInfo[0][0];
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(mySolution(str));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer;
+        let sH = new Map();
+        for (let x of s) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, val] of sH) {
+          if (val > max) {
+            max = val;
+            answer = key;
+          }
+        }
+        return answer;
+      }
+
+      str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

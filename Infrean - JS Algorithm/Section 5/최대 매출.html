@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>최대 매출</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(k, arr) {
+        let answer = 0;
+
+        for (let i = 0; i < arr.length - k; i++) {
+          let sum = 0;
+          for (let j = i; j < i + k; j++) {
+            sum += arr[j];
+          }
+          if (sum > answer) answer = sum;
+        }
+
+        return answer;
+      }
+
+      let a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(mySolution(3, a));
+
+      // 내 풀이 with 강의 힌트
+      function mySolution2(k, arr) {
+        let answer = (sum = 0);
+
+        for (let i = 0; i < k; i++) sum += arr[i];
+        answer = sum;
+        for (let i = k; i < arr.length - k; i++) {
+          sum += arr[i] - arr[i - k];
+          if (sum > answer) answer = sum;
+        }
+
+        return answer;
+      }
+
+      a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(mySolution2(3, a));
+
+      // 강의 풀이
+      function solution(k, arr) {
+        let answer,
+          sum = 0;
+        for (let i = 0; i < k; i++) sum += arr[i];
+        answer = sum;
+        for (let i = k; i < arr.length; i++) {
+          sum += arr[i] - arr[i - k];
+          answer = Math.max(answer, sum);
+        }
+        return answer;
+      }
+
+      a = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      console.log(solution(3, a));
+    </script>
+  </body>
+</html>
