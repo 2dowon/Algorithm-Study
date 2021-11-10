@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>교육과정설계</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(need, plan) {
+        let answer = "YES";
+        let needArray = Array.from({ length: need.length }, (v, i) => need[i]);
+
+        for (let p of plan) {
+          if (p === needArray[0]) needArray.shift();
+        }
+
+        if (needArray.length > 0) answer = "NO";
+
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CBDAGE";
+      let b2 = "CGEADB";
+      console.log(mySolution(a, b));
+      console.log(mySolution(a, b2));
+
+      // 강의 풀이
+      function solution(need, plan) {
+        let answer = "YES";
+        let queue = need.split("");
+        for (let x of plan) {
+          if (queue.includes(x)) {
+            if (x !== queue.shift()) return "NO";
+          }
+        }
+        if (queue.length > 0) return "NO";
+        return answer;
+      }
+
+      a = "CBA";
+      b = "CBDAGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>

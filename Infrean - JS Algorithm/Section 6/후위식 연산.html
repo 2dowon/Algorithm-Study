@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>후위식 연산</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이 with 힌트
+      function mySolution(str) {
+        let answer = 0;
+        let stack = [];
+
+        for (let i of str) {
+          if (i === "+" || i === "-" || i === "*" || i === "/") {
+            let right = Number(stack.pop());
+            let left = Number(stack.pop());
+
+            if (i === "+") stack.push(left + right);
+            else if (i === "-") stack.push(left - right);
+            else if (i === "*") stack.push(left * right);
+            else if (i === "/") stack.push(left / right);
+          } else stack.push(i);
+        }
+
+        answer = stack.pop();
+
+        return answer;
+      }
+
+      let str = "352+*9-";
+      console.log(mySolution(str));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer;
+        let stack = [];
+        for (let x of s) {
+          if (!isNaN(x)) stack.push(Number(x));
+          else {
+            let rt = stack.pop();
+            let lt = stack.pop();
+            if (x === "+") stack.push(lt + rt);
+            else if (x === "-") stack.push(lt - rt);
+            else if (x === "*") stack.push(lt * rt);
+            else if (x === "/") stack.push(lt / rt);
+          }
+        }
+        answer = stack[0];
+        return answer;
+      }
+
+      str = "352+*9-";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

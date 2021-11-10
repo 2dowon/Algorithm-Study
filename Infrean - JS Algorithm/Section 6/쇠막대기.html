@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>쇠막대기</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이 => 두 번째 테스트케이스에서는 정답이 아님
+      function mySolution(str) {
+        let answer = 0;
+        let stack = [];
+
+        for (let s of str) {
+          if (s === "(") stack.push(s);
+          else if (s === ")") {
+            if (stack[stack.length - 1] === "(") {
+              stack.pop();
+              answer += stack.filter((e) => e === "(").length;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let a = "()(((()())(())()))(())";
+      let b = "(((()(()()))(())()))(()())";
+      console.log(mySolution(a)); // 17
+      console.log(mySolution(b)); // 26
+
+      // 내 풀이 with 강의 힌트
+      function mySolution2(str) {
+        let answer = 0;
+        let stack = [];
+
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === "(") stack.push("(");
+          else if (str[i] === ")") {
+            if (str[i - 1] === "(") {
+              stack.pop();
+              answer += stack.length;
+            } else {
+              stack.pop();
+              answer += 1;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      a = "()(((()())(())()))(())";
+      b = "(((()(()()))(())()))(()())";
+      console.log(mySolution2(a));
+      console.log(mySolution2(b));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = 0;
+        let stack = [];
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "(") stack.push("(");
+          else {
+            stack.pop();
+            if (s[i - 1] === "(") answer += stack.length;
+            else answer++;
+            //stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
+          }
+        }
+        return answer;
+      }
+
+      a = "()(((()())(())()))(())";
+      b = "(((()(()()))(())()))(()())";
+      console.log(solution(a));
+      console.log(solution(b));
+    </script>
+  </body>
+</html>

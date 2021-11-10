@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>올바른 괄호</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이 => 시간 초과
+      function mySolution(s) {
+        let answer = "YES";
+        let stack = [];
+
+        let brackets = s.split("");
+
+        for (let b in brackets) {
+          if (brackets[b] === "(") stack.push(brackets[b]);
+          if (brackets[b] === ")") {
+            if (stack.length > 0) stack.pop();
+            else return "NO";
+          }
+        }
+
+        if (stack.length > 0) return "NO";
+
+        return answer;
+      }
+
+      let s = "(()(()))(()";
+      console.log(mySolution(s));
+
+      // 내 풀이2
+      function mySolution2(s) {
+        let answer = "YES";
+        let stackPoint = 0;
+
+        let brackets = s.split("");
+
+        for (let b in brackets) {
+          if (brackets[b] === "(") stackPoint += 1;
+          if (brackets[b] === ")") {
+            if (stackPoint > 0) stackPoint -= 1;
+            else return "NO";
+          }
+        }
+
+        if (stackPoint > 0) return "NO";
+
+        return answer;
+      }
+
+      s = "(()(()))(()";
+      console.log(mySolution2(s));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer = "YES";
+        let stack = [];
+        for (let x of s) {
+          if (x === "(") stack.push(x);
+          else {
+            if (stack.length === 0) return "NO";
+            stack.pop();
+          }
+        }
+        if (stack.length > 0) return "NO";
+        return answer;
+      }
+
+      a = "(()(()))(()";
+      console.log(solution(a));
+    </script>
+  </body>
+</html>

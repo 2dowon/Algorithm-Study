@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>괄호 문자 제거</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(str) {
+        let answer = "";
+        let stack = [];
+
+        for (let s of str) {
+          if (s === "(") stack.push(s);
+          if (s === ")") stack.pop(s);
+          if (s !== ")" && stack.length === 0) answer += s;
+        }
+
+        return answer;
+      }
+
+      let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(mySolution(str));
+
+      // 강의 풀이
+      function solution(s) {
+        let answer;
+        let stack = [];
+        for (let x of s) {
+          if (x === ")") {
+            while (stack.pop() !== "(");
+          } else stack.push(x);
+        }
+        answer = stack.join("");
+        return answer;
+      }
+
+      str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
