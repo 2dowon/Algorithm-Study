@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Special Sort</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이 & 강의 풀이
+      function mySolution(arr) {
+        let answer = arr;
+
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = 0; j < arr.length - i - 1; j++) {
+            console.log(i, j);
+            if (arr[j] > 0 && arr[j + 1] < 0) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, -3, -2, 5, 6, -6];
+      console.log(mySolution(arr));
+
+      // 강의 풀이
+    </script>
+  </body>
+</html>
