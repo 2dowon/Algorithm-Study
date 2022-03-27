@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>재귀함수</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이 => X (스택프레임에 대한 이해도가 전혀 없었음)
+
+      function mySolution(n) {
+        if (n <= 0) return;
+
+        console.log(n);
+        mySolution(n - 1);
+      }
+
+      console.log(mySolution(3));
+
+      // 강의 풀이
+      function solution(n) {
+        function DFS(L) {
+          if (L == 0) return;
+          else {
+            DFS(L - 1);
+            console.log(L);
+          }
+        }
+        DFS(n);
+      }
+
+      solution(3);
+    </script>
+  </body>
+</html>
