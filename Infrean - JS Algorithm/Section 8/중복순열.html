@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복순열</title>
+  </head>
+  <body>
+    <script>
+      // ❌
+      function _solution(n, m) {
+        let answer = [];
+        let count = 0;
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            console.log(i, j);
+            count += 1;
+          }
+        }
+        console.log(count);
+        return answer;
+      }
+
+      console.log(_solution(3, 2));
+
+      // ✅
+      function solution(n, m) {
+        let answer = [];
+        let tmp = Array.from({ length: m }, () => 0);
+        function DFS(L) {
+          if (L === m) {
+            answer.push(tmp.slice());
+          } else {
+            for (let i = 1; i <= n; i++) {
+              tmp[L] = i;
+              DFS(L + 1);
+            }
+          }
+        }
+
+        DFS(0);
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>
