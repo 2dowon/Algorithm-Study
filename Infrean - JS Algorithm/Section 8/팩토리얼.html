@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>팩토리얼</title>
+  </head>
+  <body>
+    <script>
+      // 내 풀이
+      function mySolution(n) {
+        let answer = 1;
+        function DFS(m) {
+          if (m === 1) return;
+          answer *= m;
+          DFS(m - 1);
+        }
+        DFS(n);
+        return answer;
+      }
+
+      console.log(mySolution(5));
+
+      // 강의 풀이
+      function solution(n) {
+        let answer;
+        function DFS(n) {
+          if (n === 1) return 1;
+          else return n * DFS(n - 1);
+        }
+        answer = DFS(n);
+        return answer;
+      }
+
+      console.log(solution(5));
+    </script>
+  </body>
+</html>
